@@ -167,7 +167,11 @@ footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:14px;display:f
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.frame{transition:none}.piece:hover .frame,a.frame:hover{transform:none}.player:hover .bars i{animation:none}}
 .player-embed{margin-top:18px}
-.player-embed iframe{display:block;width:100%;height:80px;border:2px solid var(--ink);border-radius:0}
+.player-embed iframe{display:block;width:100%;aspect-ratio:16/9;height:auto;border:2px solid var(--ink)}
+
+.skills{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.skills li{font-size:12px;font-weight:500;border:1.5px solid var(--ink);padding:3px 9px}
+.skills li:hover{background:var(--ink);color:#fff}
 </style>
 </head>
 <body>
@@ -207,7 +211,7 @@ footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:14px;display:f
         <figcaption class="caption"><em>Pain Relief</em>, 2019<br>Ibrahim El-Salahi · monoprint on calendered Belgian linen</figcaption>
       </figure>
       <div class="player-embed">
-        <div class="lbl" style="font-size:10px;color:var(--sky);margin-bottom:6px">Now playing · <span lang="ar" style="font-family:var(--arabic);letter-spacing:0;text-transform:none;font-size:14px">محمد وردي</span></div>
+        <div class="lbl" style="font-size:10px;color:var(--sky);margin-bottom:6px">Now playing · <span lang="ar" style="font-family:var(--arabic);letter-spacing:0;text-transform:none;font-size:14px">Leali, by Rasha</span></div>
         <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/79UalDGAHyQvsBMZcqb2L6?utm_source=generator&si=f2e59c63780b4339" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
     </div>
@@ -374,8 +378,8 @@ footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:14px;display:f
         </div>
       </div>
       <figure class="piece" style="margin:0">
-        <div class="frame"><img src="pi-sound.jpg" alt="Raspberry Pi with a microphone on a desk, a monitor showing a live audio waveform" loading="lazy"></div>
-        <figcaption class="caption"><em>Sound-reactive Raspberry Pi</em><br>Python on a Raspberry Pi · presented at Code at the Capitol, Texas</figcaption>
+        <div class="frame"><img src="ludanSagrada.jpeg" alt="Me smiling in front of the Sagrada Família in Barcelona" loading="lazy"></div>
+        <figcaption class="caption"><em>Ludan Alsoudani</em><br>Sagrada Família, Barcelona (still under construction, like any good project!)</figcaption>
       </figure>
     </div>
   </section>
