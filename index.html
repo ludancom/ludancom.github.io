@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ludan Alsoudani</title>
+<meta name="description" content="Ludan Alsoudani, software engineer and Princeton CS student. Projects, experience, research.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;800&family=Amiri&display=swap">
+<style>
+/* Layout: one white gallery wall in four rooms (Work, Experience, Research, About). Every piece hangs in a black frame with a museum wall label. Red, sky blue and black come from the hero painting; a painted triangle band opens each room. Single light theme by choice. */
+:root{
+  --wall:#FFFFFF; --ink:#151413; --mute:#6B655F; --line:#E6E1D9; --linen:#EFE9DD;
+  --red:#C0322B; --sky:#3E95D8; --mat:#FBFAF8;
+  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --sans:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --arabic:'Amiri','Geeza Pro','Traditional Arabic',serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+body{background:var(--wall);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--wall)}
+.wrap{max-width:1080px;margin:0 auto}
+a{color:inherit;text-underline-offset:3px}
+a:hover{color:var(--red)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+img{max-width:100%}
+.lbl{font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase}
+
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--wall);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
+nav{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px 20px;flex-wrap:wrap;padding-block:18px 14px}
+nav a.home{text-decoration:none}
+nav ul{display:flex;gap:6px 22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav ul a{text-decoration:none;font-weight:500;padding-block:4px;border-bottom:2px solid transparent}
+nav ul a:hover,nav ul a.on{border-bottom-color:var(--red);color:var(--ink)}
+
+.band{height:16px;background:
+  linear-gradient(135deg,var(--red) 25%,transparent 25%) 0 0/16px 16px,
+  linear-gradient(225deg,var(--red) 25%,transparent 25%) 0 0/16px 16px,
+  linear-gradient(315deg,var(--sky) 25%,transparent 25%) 8px 8px/16px 16px,
+  linear-gradient(45deg,var(--sky) 25%,transparent 25%) 8px 8px/16px 16px;
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,4fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:36px 64px}
+.eyebrow{color:var(--red);margin-bottom:10px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,8.4vw,104px);line-height:.92;margin:0;letter-spacing:-.01em}
+.intro{max-width:46ch;margin:20px 0 0;font-size:17px}
+.hero-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-weight:500;font-size:14px;text-decoration:none;border:2px solid var(--ink);padding:8px 14px;color:var(--ink);background:var(--wall)}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.solid{background:var(--ink);color:#fff}
+.btn.solid:hover{background:var(--red);border-color:var(--red)}
+.prev{margin-top:26px;border-left:2px solid var(--ink);padding:2px 0 2px 14px}
+.prev div:last-child{font-size:13px;color:var(--mute)}
+
+.side{max-width:290px;width:100%;justify-self:center}
+.piece-hero{margin:0}
+.painting{border:12px solid var(--ink);background:var(--mat);padding:clamp(12px,2vw,22px)}
+.painting img{display:block;width:100%;height:auto}
+.caption{border-left:2px solid var(--ink);padding:2px 0 2px 14px;font-size:12.5px;color:var(--mute);margin-top:14px;line-height:1.5}
+.caption em{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--ink)}
+.player{display:flex;align-items:center;gap:14px;margin-top:18px;padding:10px 14px 10px 10px;border:2px solid var(--ink);text-decoration:none;color:var(--ink)}
+.player:hover{color:var(--ink);background:var(--mat)}
+.play{flex:none;width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center}
+.player:hover .play{background:var(--red)}
+.play svg{width:14px;height:14px}
+.track{min-width:0;flex:1}
+.track .t{font-family:var(--serif);font-size:21px;line-height:1.1}
+.track .a{font-family:var(--arabic);font-size:15px;color:var(--mute);line-height:1.4}
+.bars{display:flex;align-items:flex-end;gap:3px;height:24px;flex:none}
+.bars i{width:4px;background:var(--sky);height:35%}
+.bars i:nth-child(odd){background:var(--red)}
+.player:hover .bars i{animation:eq 1s ease-in-out infinite}
+.player:hover .bars i:nth-child(2){animation-delay:-.3s}.player:hover .bars i:nth-child(3){animation-delay:-.6s}.player:hover .bars i:nth-child(4){animation-delay:-.15s}.player:hover .bars i:nth-child(5){animation-delay:-.45s}
+@keyframes eq{0%,100%{height:25%}50%{height:100%}}
+
+/* rooms */
+section.room{padding-block:8px 72px}
+.room-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:28px 0 34px}
+.room-head h2{margin:0;font:800 12px/1.4 var(--sans);letter-spacing:.09em;text-transform:uppercase}
+.room-head span{color:var(--mute);font-weight:500}
+
+.frame{border:10px solid var(--ink);padding:14px;background:var(--wall);transition:transform .25s ease}
+a.frame{display:block;text-decoration:none;color:var(--ink)}
+.piece:hover .frame,a.frame:hover{transform:translateY(-4px)}
+.frame img{display:block;width:100%;height:auto}
+.wl{border-left:2px solid var(--ink);padding:2px 0 2px 14px;margin-top:16px}
+.wl h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,34px);line-height:1.05;margin:0;text-wrap:balance}
+.meta{font-size:13px;color:var(--mute);margin:4px 0 6px}
+.medium{font-size:13px;font-style:italic;margin-bottom:8px}
+.wl p{margin:0 0 10px;max-width:58ch}
+.links{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;font-weight:500}
+.piece{position:relative;min-width:0}
+.tag{position:absolute;top:-9px;right:-8px;z-index:2;background:var(--red);color:#fff;font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 9px;transform:rotate(3deg)}
+
+.feature{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:36px;align-items:center;margin-bottom:56px}
+.feature .wl{margin-top:0}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+
+/* project screens, drawn with css */
+.screen{aspect-ratio:16/10;max-width:100%;display:flex;flex-direction:column;overflow:hidden;background:var(--linen)}
+.bar{height:22px;flex:none;background:#E2DACB;display:flex;align-items:center;gap:5px;padding:0 9px;font-size:11px;color:#7F776B;white-space:nowrap}
+.bar i{width:7px;height:7px;border-radius:50%;background:#C5BBAB;flex:none}
+.bar b{margin-left:auto;font-weight:500;color:var(--ink)}
+.stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;min-height:0}
+.nw{background:#FAFAFA}
+.nw .stage{flex-direction:column;gap:8px;padding:10px}
+.nw .mast{font-family:var(--serif);font-size:clamp(18px,2.6vw,28px);line-height:1}
+.grid8{display:grid;grid-template-columns:repeat(2,auto);gap:6px 14px}
+.word{display:flex;gap:3px}
+.word span{width:clamp(14px,1.9vw,22px);aspect-ratio:1;border:1.5px solid var(--ink);display:grid;place-items:center;font:800 clamp(8px,1vw,11px)/1 var(--sans);background:#fff}
+.word span.hit{background:var(--sky);border-color:var(--sky);color:#fff}
+.word span.got{background:var(--ink);color:#fff}
+.clock{font:500 11px var(--sans);color:var(--mute);letter-spacing:.06em}
+.tq .stage{flex-direction:column;align-items:stretch;justify-content:center;gap:6px;padding:12px 16px;background:#fff}
+.tq .row{display:flex;align-items:center;gap:8px;font-size:11px;border:1px solid var(--line);padding:5px 8px}
+.tq .row b{font-weight:800;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.tq .pill{margin-left:auto;font-size:10px;padding:2px 7px;background:var(--linen);white-space:nowrap}
+.tq .pill.m{background:var(--red);color:#fff}
+.tq .pill.n{background:var(--sky);color:#fff}
+.tq .head{display:flex;justify-content:space-between;font:800 10px var(--sans);letter-spacing:.08em;text-transform:uppercase}
+canvas.map{width:100%;height:100%;display:block}
+
+/* experience */
+.job{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:36px;align-items:center;margin-bottom:56px}
+.job .wl{margin-top:0}
+.small-jobs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.small-jobs .wl{margin-top:0}
+.soon{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--linen);padding:2px 8px;margin-left:6px;vertical-align:2px}
+
+/* research */
+.facts{display:flex;flex-wrap:wrap;gap:22px 34px;margin:12px 0 14px}
+.facts div{min-width:0}
+.facts b{display:block;font-family:var(--serif);font-weight:400;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.facts span{font-size:12px;color:var(--mute)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,4fr);gap:44px;align-items:start}
+.about p{max-width:58ch;margin:0 0 14px;font-size:16px}
+.mats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 28px;margin-top:26px}
+.mats div{border-left:2px solid var(--ink);padding:2px 0 2px 12px;font-size:13px}
+.mats .lbl{font-size:11px;display:block;margin-bottom:2px}
+.contact{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.email{font-size:14px;user-select:all;border-bottom:1px dashed var(--mute)}
+.copy{font:500 13px var(--sans);background:var(--wall);border:2px solid var(--ink);padding:6px 12px;cursor:pointer;color:var(--ink)}
+.copy:hover{background:var(--ink);color:#fff}
+
+footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--mute)}
+
+@media (max-width:820px){
+  .hero,.feature,.pair,.job,.small-jobs,.about{grid-template-columns:minmax(0,1fr)}
+  .hero{padding-block:22px 44px;gap:26px}
+  .side{max-width:none;justify-self:stretch}
+  .piece-hero{display:flex;align-items:center;gap:14px}
+  .piece-hero .painting{flex:none;width:76px;border-width:4px;padding:5px}
+  .piece-hero .caption{margin-top:0;font-size:12px}
+  .piece-hero .caption em{font-size:16px}
+  .frame{border-width:7px;padding:9px}
+  .tag{right:-2px}
+  .feature,.job{gap:0}
+  .feature .wl,.job .wl{margin-top:16px}
+  section.room{padding-block:4px 52px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.frame{transition:none}.piece:hover .frame,a.frame:hover{transform:none}.player:hover .bars i{animation:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav aria-label="Sections">
+    <a class="lbl home" href="#top">Ludan Alsoudani</a>
+    <ul class="lbl">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="Ludan_Alsoudani_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="wrap" id="top">
+  <div class="band" role="presentation"></div>
+
+  <section class="hero" aria-label="Introduction">
+    <div>
+      <div class="lbl eyebrow">↓ Now showing</div>
+      <h1>Ludan<br>Alsoudani</h1>
+      <p class="intro">Software engineer studying computer science at Princeton, class of 2028. I write fast C++ for financial systems, ship full-stack apps people use, and make games.</p>
+      <div class="hero-links">
+        <a class="btn solid" href="#work">See the work ↓</a>
+        <a class="btn" href="https://github.com/ludancom" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/ludan-alsoudani/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+      <div class="prev"><div class="lbl" style="font-size:11px">Previously</div><div>StarQube · NASA Center for Space Research · University of West Attica</div></div>
+    </div>
+
+    <div class="side">
+      <figure class="piece-hero">
+        <div class="painting"><img src="pain-relief.jpg" alt="Ibrahim El-Salahi, Pain Relief: a standing figure drawn in black, red and sky blue lines on raw linen"></div>
+        <figcaption class="caption"><em>Pain Relief</em>, 2019<br>Ibrahim El-Salahi · monoprint on calendered Belgian linen</figcaption>
+      </figure>
+      <a class="player" href="https://www.youtube.com/results?search_query=Mohammed+Wardi+Ma+Bansak" target="_blank" rel="noopener" aria-label="Listen to Ma Bansak by Mohammed Wardi on YouTube">
+        <span class="play"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2 L14 8 L4 14 Z" fill="currentColor"/></svg></span>
+        <span class="track"><span class="lbl" style="font-size:10px;color:var(--sky);display:block">Now playing</span><span class="t" style="display:block">Ma Bansak</span><span class="a" lang="ar" dir="rtl" style="display:block;text-align:left">محمد وردي</span></span>
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="room" id="work">
+    <div class="band" role="presentation"></div>
+    <div class="room-head"><h2>↓ Selected work</h2><span class="lbl">Room 1 of 4</span></div>
+
+    <article class="piece feature">
+      <a class="frame" href="https://nassaule.vercel.app/" target="_blank" rel="noopener" aria-label="Play Nassaule">
+        <div class="screen nw">
+          <div class="bar"><i></i><i></i><i></i><span>nassaule.vercel.app</span><b>▶ Play</b></div>
+          <div class="stage">
+            <div class="mast">Nassaule</div>
+            <div class="grid8" aria-hidden="true">
+              <div class="word"><span class="got">T</span><span class="got">I</span><span class="got">G</span><span class="got">E</span><span class="got">R</span></div>
+              <div class="word"><span class="hit">T</span><span></span><span></span><span class="hit">E</span><span></span></div>
+              <div class="word"><span></span><span class="hit">I</span><span></span><span></span><span class="hit">R</span></div>
+              <div class="word"><span class="hit">T</span><span></span><span class="hit">G</span><span></span><span></span></div>
+              <div class="word"><span></span><span></span><span></span><span class="hit">E</span><span class="hit">R</span></div>
+              <div class="word"><span></span><span class="hit">I</span><span></span><span></span><span></span></div>
+              <div class="word"><span></span><span></span><span class="hit">G</span><span></span><span class="hit">R</span></div>
+              <div class="word"><span class="hit">T</span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="clock">⏱ 02:41 · 1 of 8 solved</div>
+          </div>
+        </div>
+      </a>
+      <div class="wl">
+        <h3>Nassaule</h3>
+        <div class="meta">Daily word game for the Nassau Weekly · 2026</div>
+        <div class="medium">React 19, Vite, JavaScript, Vercel</div>
+        <p>Players hunt eight hidden five-letter words at once. Every guess is checked against all eight, and solving one word cascades its letters into the others. I also built a puzzle builder so editors can write and schedule new puzzles weeks ahead, plus an archive of past games.</p>
+        <p style="font-size:13px;color:var(--mute)">12,500-word guess list · embeds in the magazine's WordPress site · no backend needed</p>
+        <div class="links"><a href="https://nassaule.vercel.app/" target="_blank" rel="noopener">Play it ↗</a><a href="https://github.com/ludancom/Nassaule" target="_blank" rel="noopener">Code ↗</a></div>
+      </div>
+    </article>
+
+    <div class="pair">
+      <article class="piece">
+        <span class="tag">2nd place</span>
+        <a class="frame" href="https://ms-codefor-good-track-b-team8.vercel.app/" target="_blank" rel="noopener" aria-label="Open Grove">
+          <div class="screen">
+            <div class="bar"><i></i><i></i><i></i><span>grove</span><b>Open ↗</b></div>
+            <div class="stage"><canvas class="map" id="grove-map" width="640" height="380" aria-hidden="true"></canvas></div>
+          </div>
+        </a>
+        <div class="wl">
+          <h3>Grove</h3>
+          <div class="meta">Morgan Stanley Code for Good · 2nd place · 2026</div>
+          <div class="medium">Next.js, Node.js, Express, Supabase (PostgreSQL), Anthropic API</div>
+          <p>An analytics platform for nonprofits and city planners that maps nearly 2,000 NYC food resources against census data to show where help is missing. It includes a funding simulator and AI-written reports. Built in 3 days for under $20 a month to run.</p>
+          <div class="links"><a href="https://ms-codefor-good-track-b-team8.vercel.app/" target="_blank" rel="noopener">Visit live ↗</a><a href="https://www.youtube.com/watch?v=F1wInckuaYM" target="_blank" rel="noopener">Demo ↗</a><a href="https://github.com/hetaskesen/MorganStanley_Team8_Grove" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+
+      <article class="piece">
+        <a class="frame" href="https://tigerta.onrender.com" target="_blank" rel="noopener" aria-label="Open TigerTA">
+          <div class="screen tq">
+            <div class="bar"><i></i><i></i><i></i><span>tigerta.onrender.com</span><b>Open ↗</b></div>
+            <div class="stage" aria-hidden="true">
+              <div class="head"><span>COS 126 · Lab queue</span><span style="color:var(--mute)">4 TAs on duty</span></div>
+              <div class="row"><b>01</b> Student · Assignment 3 <span class="pill m">Matched with TA</span></div>
+              <div class="row"><b>02</b> Student · Debugging <span class="pill n">Up next</span></div>
+              <div class="row"><b>03</b> Student · Concept question <span class="pill">Waiting</span></div>
+              <div class="row"><b>04</b> Student · Assignment 3 <span class="pill">Waiting</span></div>
+            </div>
+          </div>
+        </a>
+        <div class="wl">
+          <h3>TigerTA</h3>
+          <div class="meta">Team lead, 5 engineers · Feb – May 2026</div>
+          <div class="medium">Python, PostgreSQL (Neon), Jinja2, Psycopg, Render</div>
+          <p>A queue system for Princeton's intro CS labs, used by 100+ students and 30+ TAs. It matches TAs with the next student automatically and keeps the queue in sync in real time, with database-level safeguards against race conditions. Student, TA and admin roles sign in with Princeton NetID.</p>
+          <p style="font-size:13px;color:var(--mute)">100 tests · 85% coverage · 470+ commits</p>
+          <div class="links"><a href="https://tigerta.onrender.com" target="_blank" rel="noopener">Visit live ↗</a><a href="https://github.com/ludancom/TigerTA" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="room" id="experience">
+    <div class="band" role="presentation"></div>
+    <div class="room-head"><h2>↓ Experience</h2><span class="lbl">Room 2 of 4</span></div>
+
+    <article class="piece job">
+      <figure style="margin:0"><div class="frame"><img src="starqube-team.jpg" alt="Ludan with the StarQube engineering team in their Geneva office" loading="lazy"></div></figure>
+      <div class="wl">
+        <h3>StarQube</h3>
+        <div class="meta">Software Engineering Intern · Geneva, Switzerland · Jun – Aug 2026</div>
+        <div class="medium">Modern C++20</div>
+        <p>StarQube builds financial computation infrastructure for hedge funds, investment banks and trading firms. I worked on the execution engine behind its proprietary Financial Query Language (FQL).</p>
+        <p>I replaced a legacy execution model with a coroutine-based one, making production computation pipelines about 10% faster and cutting stack memory overhead significantly. I also worked with the engineering team on redesigning production execution workflows and evaluating infrastructure improvements.</p>
+      </div>
+    </article>
+
+    <div class="small-jobs">
+      <div class="wl">
+        <h3>Liechtenstein Institute on Self-Determination <span class="soon">Back soon</span></h3>
+        <div class="meta">Software Engineer · Princeton University · Sep 2025 – May 2026</div>
+        <div class="medium">Drupal, HTML, CSS</div>
+        <p>Built and maintained the Institute's 25th anniversary website, including an interactive timeline that covers 30 years of its history.</p>
+        <div class="links"><a href="https://geolab.princeton.edu" target="_blank" rel="noopener">geolab.princeton.edu ↗</a></div>
+      </div>
+      <div class="wl">
+        <h3>University of West Attica</h3>
+        <div class="meta">Software Engineering and Geoinformatics Intern · Athens, Greece · Jun – Aug 2025</div>
+        <div class="medium">HTML, geospatial software, 360° imagery</div>
+        <p>Turned 360° imagery into 3 interactive virtual tours with location-aware content, used by 35 researchers. Designed early software for collecting and evaluating data inside the tours in real time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="room" id="research">
+    <div class="band" role="presentation"></div>
+    <div class="room-head"><h2>↓ Research</h2><span class="lbl">Room 3 of 4</span></div>
+
+    <article class="piece">
+      <a class="frame" href="nasa-poster.jpg" target="_blank" rel="noopener" aria-label="Open the NASA poster at full size"><img src="nasa-poster.jpg" alt="Research poster: NASA SEES Open Cluster Team, finding the age and distance of open cluster NGC 1245" loading="lazy"></a>
+      <div class="wl">
+        <h3>How old and how far is NGC 1245?</h3>
+        <div class="meta">NASA SEES · UT Austin Center for Space Research · Jun – Sep 2023</div>
+        <div class="medium">Python, NumPy, pandas, Matplotlib, AstroImageJ, Stellarium</div>
+        <p>Our team measured the age and distance of an open star cluster in Perseus using telescope images from the SARA observatory in the Canary Islands. I wrote Python scripts to clean and process raw data from 10 universities, 3 telescopes and 500 stars, then used photometry and a color-magnitude diagram to date the cluster.</p>
+        <div class="facts">
+          <div><b>~1 billion</b><span>years old</span></div>
+          <div><b>~7,340</b><span>light-years away</span></div>
+          <div><b>~300</b><span>symposium attendees</span></div>
+        </div>
+        <p style="font-size:13px;color:var(--mute)">Presented at the NASA SEES Symposium. Abstract accepted at AGU.</p>
+        <div class="links"><a href="https://www.youtube.com/watch?v=xCc_DqseDNU" target="_blank" rel="noopener">Watch the presentation ↗</a><a href="nasa-poster.jpg" target="_blank" rel="noopener">Full poster ↗</a></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="room" id="about">
+    <div class="band" role="presentation"></div>
+    <div class="room-head"><h2>↓ About</h2><span class="lbl">Room 4 of 4</span></div>
+
+    <div class="about">
+      <div>
+        <p>I'm a computer science student at Princeton (B.S.E., minor in robotics), graduating in 2028. I like work that sits close to the machine, like execution engines and concurrency, and work that ends up in front of real people, like a lab queue or a game a whole campus plays.</p>
+        <p>I founded Tiger Game Developers, Princeton's game development club, and run its workshops, game jams and group projects. Before college I built a sound-reactive Raspberry Pi system with a friend and presented it to Texas state senators at Code at the Capitol.</p>
+        <div class="mats">
+          <div><span class="lbl">Languages</span>Python, C/C++, Java, Go, JavaScript, HTML/CSS</div>
+          <div><span class="lbl">Frameworks</span>React, Node.js, Flask, FastAPI, pandas, NumPy</div>
+          <div><span class="lbl">Data and cloud</span>PostgreSQL, MySQL, AWS, Supabase, Neon, Render</div>
+          <div><span class="lbl">Coursework</span>Algorithms, Programming Systems, Machine Learning, Computer System Design</div>
+        </div>
+        <div class="contact">
+          <span class="email" id="email">ludan.alsoudani@princeton.edu</span>
+          <button class="copy" id="copy-email" type="button">Copy email</button>
+          <a class="btn" href="Ludan_Alsoudani_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+        </div>
+      </div>
+      <figure class="piece" style="margin:0">
+        <div class="frame"><img src="pi-sound.jpg" alt="Raspberry Pi with a microphone on a desk, a monitor showing a live audio waveform" loading="lazy"></div>
+        <figcaption class="caption"><em>Sound-reactive Raspberry Pi</em><br>Python on a Raspberry Pi · presented at Code at the Capitol, Texas</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <footer><span>Ludan Alsoudani · Princeton, NJ</span><span>Exhibition open through May 2028</span></footer>
+</div>
+
+<script>
+(function(){
+  /* Grove map: clustered resource dots and a few underserved areas */
+  const c=document.getElementById('grove-map');
+  if(c){const x=c.getContext('2d');let s=5;const r=()=>(s=(s*16807)%2147483647)/2147483647;
+    x.fillStyle='#EFE9DD';x.fillRect(0,0,640,380);
+    x.strokeStyle='rgba(21,20,19,.12)';x.lineWidth=1;
+    for(let i=0;i<14;i++){x.beginPath();x.moveTo(r()*640,0);x.bezierCurveTo(r()*640,120,r()*640,260,r()*640,380);x.stroke()}
+    x.fillStyle='#fff';x.strokeStyle='#151413';x.lineWidth=2;
+    x.beginPath();x.moveTo(250,40);x.bezierCurveTo(330,30,360,120,340,200);x.bezierCurveTo(330,260,380,320,300,350);x.bezierCurveTo(240,360,230,280,240,220);x.bezierCurveTo(200,160,190,60,250,40);x.fill();x.stroke();
+    x.beginPath();x.moveTo(380,150);x.bezierCurveTo(470,120,560,160,580,230);x.bezierCurveTo(560,300,450,320,400,280);x.bezierCurveTo(360,240,350,180,380,150);x.fill();x.stroke();
+    const hubs=[[280,110],[300,230],[450,210],[510,250],[270,300]];
+    for(let i=0;i<260;i++){const h=hubs[Math.floor(r()*hubs.length)];const a=r()*6.28,d=Math.pow(r(),1.6)*60;x.fillStyle=r()<.5?'#3E95D8':'#151413';x.globalAlpha=.75;x.beginPath();x.arc(h[0]+Math.cos(a)*d,h[1]+Math.sin(a)*d*0.8,2.2,0,7);x.fill()}
+    x.globalAlpha=.2;x.fillStyle='#C0322B';[[540,190,34],[320,330,26],[420,290,30]].forEach(([a,b,rr])=>{x.beginPath();x.arc(a,b,rr,0,7);x.fill()});
+    x.globalAlpha=1;x.strokeStyle='#C0322B';x.lineWidth=2;[[540,190,34],[320,330,26],[420,290,30]].forEach(([a,b,rr])=>{x.beginPath();x.arc(a,b,rr,0,7);x.stroke()});
+    x.fillStyle='#151413';x.font='800 13px Archivo, Arial, sans-serif';x.fillText('UNDERSERVED ZIPs',24,350);x.fillStyle='#C0322B';x.fillRect(24,358,10,10);
+  }
+
+  /* copy email */
+  const b=document.getElementById('copy-email'),e=document.getElementById('email');
+  b.addEventListener('click',function(){
+    const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy email',1600)};
+    const pick=()=>{const rg=document.createRange();rg.selectNodeContents(e);const sel=getSelection();sel.removeAllRanges();sel.addRange(rg);b.textContent='Selected, press copy'};
+    try{navigator.clipboard.writeText(e.textContent).then(done,pick)}catch(_){pick()}
+  });
+
+  /* highlight current room in nav */
+  const links=[...document.querySelectorAll('nav ul a[href^="#"]')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(l=>l.classList.remove('on'));const l=map.get(en.target.id);if(l)l.classList.add('on')}})},{rootMargin:'-45% 0px -50% 0px'});
+    map.forEach((_,id)=>{const el=document.getElementById(id);if(el)io.observe(el)});
+  }
+})();
+</script>
+</body>
+</html>
