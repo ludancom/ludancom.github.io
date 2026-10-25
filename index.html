@@ -166,6 +166,8 @@ footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:14px;display:f
   section.room{padding-block:4px 52px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.frame{transition:none}.piece:hover .frame,a.frame:hover{transform:none}.player:hover .bars i{animation:none}}
+.player-embed{margin-top:18px}
+.player-embed iframe{display:block;width:100%;height:80px;border:2px solid var(--ink);border-radius:0}
 </style>
 </head>
 <body>
@@ -204,11 +206,10 @@ footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:14px;display:f
         <div class="painting"><img src="pain-relief.jpg" alt="Ibrahim El-Salahi, Pain Relief: a standing figure drawn in black, red and sky blue lines on raw linen"></div>
         <figcaption class="caption"><em>Pain Relief</em>, 2019<br>Ibrahim El-Salahi · monoprint on calendered Belgian linen</figcaption>
       </figure>
-      <a class="player" href="https://www.youtube.com/results?search_query=Mohammed+Wardi+Ma+Bansak" target="_blank" rel="noopener" aria-label="Listen to Ma Bansak by Mohammed Wardi on YouTube">
-        <span class="play"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2 L14 8 L4 14 Z" fill="currentColor"/></svg></span>
-        <span class="track"><span class="lbl" style="font-size:10px;color:var(--sky);display:block">Now playing</span><span class="t" style="display:block">Ma Bansak</span><span class="a" lang="ar" dir="rtl" style="display:block;text-align:left">محمد وردي</span></span>
-        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-      </a>
+      <div class="player-embed">
+        <div class="lbl" style="font-size:10px;color:var(--sky);margin-bottom:6px">Now playing · <span lang="ar" style="font-family:var(--arabic);letter-spacing:0;text-transform:none;font-size:14px">محمد وردي</span></div>
+        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/6pt6s6hzmKiu2q95driiW4?utm_source=generator&si=e226995ff4ff4813" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
     </div>
   </section>
 
@@ -358,7 +359,8 @@ footer{border-top:2px solid var(--ink);margin-top:8px;padding-top:14px;display:f
     <div class="about">
       <div>
         <p>I'm a computer science student at Princeton (B.S.E., minor in robotics), graduating in 2028. I like work that sits close to the machine, like execution engines and concurrency, and work that ends up in front of real people, like a lab queue or a game a whole campus plays.</p>
-        <p>I founded Tiger Game Developers, Princeton's game development club, and run its workshops, game jams and group projects. Before college I built a sound-reactive Raspberry Pi system with a friend and presented it to Texas state senators at Code at the Capitol.</p>
+        <p>Outside of class, most of what I do is about building community. I founded Tiger Game Developers, Princeton's game development club, so people who wanted to make games had a place to learn and build together. I do marketing for Sudanese at Princeton (SAP), where I help bring Sudanese students and the wider campus together around our culture. I also work at the climbing wall, which is one of the friendliest communities on campus, and I'm on the tech team at Business Today. Before college, I built a sound-reactive Raspberry Pi system with a friend and presented it to Texas state senators at Code at the Capitol. Since then, my love for CS has only grown!</p>
+        
         <div class="mats">
           <div><span class="lbl">Languages</span>Python, C/C++, Java, Go, JavaScript, HTML/CSS</div>
           <div><span class="lbl">Frameworks</span>React, Node.js, Flask, FastAPI, pandas, NumPy</div>
